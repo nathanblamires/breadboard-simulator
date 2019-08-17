@@ -12,4 +12,5 @@ struct AppState: Equatable, Codable {
     let version: Version = { try! Version(BundledConfig.versionString) }()
     let buildString: String = { BundledConfig.buildString }()
     var testValue: Int = 0
+    var computerState = ComputerState()
 }
