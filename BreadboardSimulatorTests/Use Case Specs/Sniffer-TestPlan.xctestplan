@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "8871EFC4-C2B0-40E8-83DC-74AAAAB6B825",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Sniffer.xcodeproj",
+        "identifier" : "8D34A6E222F50DD60020AC89",
+        "name" : "SnifferTests"
+      }
+    }
+  ],
+  "version" : 1
+}

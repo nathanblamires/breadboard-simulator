@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "6851DDD6-C7CF-48E7-84D4-2343F46AB252",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:BreadboardSimulator.xcodeproj",
+        "identifier" : "8D34A6E222F50DD60020AC89",
+        "name" : "BreadboardSimulatorTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:BreadboardSimulator.xcodeproj",
+        "identifier" : "8D34A6ED22F50DD60020AC89",
+        "name" : "BreadboardSimulatorUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CoreiOS",
+        "repositoryURL": "git@github.com:nathanblamires/core-ios.git",
+        "state": {
+          "branch": null,
+          "revision": "5713c6128db738967f919612089a446aa277e563",
+          "version": "0.3.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
