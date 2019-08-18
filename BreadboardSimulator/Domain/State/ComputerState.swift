@@ -46,39 +46,39 @@ struct ComputerState: Equatable, Codable {
     var controlLines: [ControlLine] = [
         
         // Registers
-        .reg1In(isOn: false),
-        .reg1Out(isOn: false),
-        .reg2In(isOn: false),
-        .reg2Out(isOn: false),
-        .reg3In(isOn: false),
-        .reg3Out(isOn: false),
-        .reg4In(isOn: false),
-        .reg4Out(isOn: false),
+        ControlLine(type: .reg1In, isOn: false),
+        ControlLine(type: .reg1Out, isOn: false),
+        ControlLine(type: .reg2In, isOn: false),
+        ControlLine(type: .reg2In, isOn: false),
+        ControlLine(type: .reg3In, isOn: false),
+        ControlLine(type: .reg3Out, isOn: false),
+        ControlLine(type: .reg4In, isOn: false),
+        ControlLine(type: .reg4Out, isOn: false),
         
         // ROM
-        .romAddrIn(isOn: false),
-        .romValueOut(isOn: false),
-        .romAddrBit9(isOn: false),
+        ControlLine(type: .romAddrIn, isOn: false),
+        ControlLine(type: .romValueOut, isOn: false),
+        ControlLine(type: .romAddrBit9, isOn: false),
         
         // RAM
-        .ramAddrIn(isOn: false),
-        .ramValueIn(isOn: false),
-        .ramValueOut(isOn: false),
+        ControlLine(type: .ramAddrIn, isOn: false),
+        ControlLine(type: .ramValueIn, isOn: false),
+        ControlLine(type: .ramValueOut, isOn: false),
         
         // Program Counter
-        .pcIn(isOn: false),
-        .pcOut(isOn: false),
-        .pcInc(isOn: false),
+        ControlLine(type: .pcIn, isOn: false),
+        ControlLine(type: .pcOut, isOn: false),
+        ControlLine(type: .pcInc, isOn: false),
         
         // ALU
-        .aluNeg(isOn: false),
-        .aluOut(isOn: false),
-        .aluSetFlags(isOn: false),
+        ControlLine(type: .aluNeg, isOn: false),
+        ControlLine(type: .aluOut, isOn: false),
+        ControlLine(type: .aluSetFlags, isOn: false),
         
         // Other
-        .irIn(isOn: false),
-        .doIn(isOn: false),
-        .halt(isOn: false)
+        ControlLine(type: .irIn, isOn: false),
+        ControlLine(type: .doIn, isOn: false),
+        ControlLine(type: .halt, isOn: false)
     ]
     
     // DMD
@@ -95,24 +95,15 @@ struct ComputerState: Equatable, Codable {
 extension ComputerState {
     
     internal var isALUNegFlagOn: Bool {
-        for controlLine in controlLines {
-            if case .aluNeg(let isOn) = controlLine { return isOn }
-        }
-        fatalError("Could not find the aluNeg control line")
+        controlLines.first(where: { $0.type == .aluNeg })!.isOn
     }
     
     internal var isROMAddrBit9On: Bool {
-        for controlLine in controlLines {
-            if case .romAddrBit9(let isOn) = controlLine { return isOn }
-        }
-        fatalError("Could not find the romAddrBit9 control line")
+        controlLines.first(where: { $0.type == .romAddrBit9 })!.isOn
     }
     
     internal var isHaltOn: Bool {
-        for controlLine in controlLines {
-            if case .halt(let isOn) = controlLine { return isOn }
-        }
-        fatalError("Could not find the romAddrBit9 control line")
+        controlLines.first(where: { $0.type == .halt })!.isOn
     }
 }
 

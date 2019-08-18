@@ -137,7 +137,7 @@ class SimulatorViewController: UIViewController {
         state.controlLines
             .filter { $0.isOn }
             .forEach {
-                let label = UILabel(text: $0.title)
+                let label = UILabel(text: $0.type.title)
                 activeControlLinesStackView.addArrangedSubview(label)
             }
     }

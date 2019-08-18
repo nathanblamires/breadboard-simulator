@@ -70,8 +70,8 @@ class Simulator {
         let input = (Int(step.rawValue) << 8) | Int(instruction.machineCode) | (stateCopy.isOverflow ? 1 : 0)
         let output = Simulator.logic[input]
         stateCopy.controlLines = stateCopy.controlLines.map { controlLine -> ControlLine in
-            let isOn = (output & controlLine.mask) > 0
-            return controlLine.toggled(on: isOn)
+            let isOn = (output & controlLine.type.mask) > 0
+            return ControlLine(type: controlLine.type, isOn: isOn)
         }
         return stateCopy
     }
@@ -81,18 +81,18 @@ class Simulator {
     private func latchValuesIfNeeded(state: ComputerState) -> ComputerState {
         var stateCopy = state
         let busValue = stateCopy.controlLines
-            .filter { $0.isOn && $0.isOutputLine }
+            .filter { $0.isOn && $0.type.isOutputLine }
             .compactMap { return assertedValue(in: stateCopy, from: $0) }
             .first ?? 0
         stateCopy.controlLines
-            .filter { $0.isOn && $0.isInputLine }
+            .filter { $0.isOn && $0.type.isInputLine }
             .forEach { stateCopy = updateValue(in: stateCopy, correspondingTo: $0, with: busValue) }
         return stateCopy
     }
     
     private func updateValue(in state: ComputerState, correspondingTo controlLine: ControlLine, with value: UInt8) -> ComputerState {
         var stateCopy = state
-        switch controlLine {
+        switch controlLine.type {
         case .reg1In: stateCopy.register1 = value
         case .reg2In: stateCopy.register2 = value
         case .reg3In: stateCopy.register3 = value
@@ -133,7 +133,7 @@ class Simulator {
     }
     
     private func assertedValue(in state: ComputerState, from controlLine: ControlLine) -> UInt8? {
-        switch controlLine {
+        switch controlLine.type {
         case .reg1Out: return state.register1
         case .reg2Out: return state.register2
         case .reg3Out: return state.register3

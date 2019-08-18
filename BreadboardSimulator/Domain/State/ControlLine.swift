@@ -8,59 +8,52 @@
 
 import Foundation
 
-enum ControlLine: Equatable, Codable {
-    
-    init(from decoder: Decoder) throws {
-        throw Error.um
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        throw Error.um
-    }
-    
-    enum Error: Swift.Error {
-        case um
-    }
+struct ControlLine: Equatable, Codable {
+    let type: ControlLineType
+    var isOn: Bool
+}
+
+enum ControlLineType: String, Equatable, Codable {
     
     // Registers
-    case reg1In(isOn: Bool)
-    case reg1Out(isOn: Bool)
-    case reg2In(isOn: Bool)
-    case reg2Out(isOn: Bool)
-    case reg3In(isOn: Bool)
-    case reg3Out(isOn: Bool)
-    case reg4In(isOn: Bool)
-    case reg4Out(isOn: Bool)
+    case reg1In
+    case reg1Out
+    case reg2In
+    case reg2Out
+    case reg3In
+    case reg3Out
+    case reg4In
+    case reg4Out
     
     // ROM
-    case romAddrIn(isOn: Bool)
-    case romValueOut(isOn: Bool)
-    case romAddrBit9(isOn: Bool)
+    case romAddrIn
+    case romValueOut
+    case romAddrBit9
     
     // RAM
-    case ramAddrIn(isOn: Bool)
-    case ramValueIn(isOn: Bool)
-    case ramValueOut(isOn: Bool)
+    case ramAddrIn
+    case ramValueIn
+    case ramValueOut
     
     // Program Counter
-    case pcIn(isOn: Bool)
-    case pcOut(isOn: Bool)
-    case pcInc(isOn: Bool)
+    case pcIn
+    case pcOut
+    case pcInc
     
     // ALU
-    case aluNeg(isOn: Bool)
-    case aluOut(isOn: Bool)
-    case aluSetFlags(isOn: Bool)
+    case aluNeg
+    case aluOut
+    case aluSetFlags
     
     // Other
-    case irIn(isOn: Bool)
-    case doIn(isOn: Bool)
-    case halt(isOn: Bool)
+    case irIn
+    case doIn
+    case halt
 }
 
 // MARK:- Line Type
 
-extension ControlLine {
+extension ControlLineType {
     
     var isInputLine: Bool {
         switch self {
@@ -77,75 +70,14 @@ extension ControlLine {
     }
 }
 
-// MARK:- On Status
-
-extension ControlLine {
-    
-    var isOn: Bool {
-        switch self {
-        case .reg1In(let isOn): return isOn
-        case .reg1Out(let isOn): return isOn
-        case .reg2In(let isOn): return isOn
-        case .reg2Out(let isOn): return isOn
-        case .reg3In(let isOn): return isOn
-        case .reg3Out(let isOn): return isOn
-        case .reg4In(let isOn): return isOn
-        case .reg4Out(let isOn): return isOn
-        case .romAddrIn(let isOn): return isOn
-        case .romValueOut(let isOn): return isOn
-        case .romAddrBit9(let isOn): return isOn
-        case .ramAddrIn(let isOn): return isOn
-        case .ramValueIn(let isOn): return isOn
-        case .ramValueOut(let isOn): return isOn
-        case .pcIn(let isOn): return isOn
-        case .pcOut(let isOn): return isOn
-        case .pcInc(let isOn): return isOn
-        case .aluNeg(let isOn): return isOn
-        case .aluOut(let isOn): return isOn
-        case .aluSetFlags(let isOn): return isOn
-        case .irIn(let isOn): return isOn
-        case .doIn(let isOn): return isOn
-        case .halt(let isOn): return isOn
-        }
-    }
-    
-    func toggled(on: Bool)-> ControlLine {
-        switch self {
-        case .reg1In: return .reg1In(isOn: on)
-        case .reg1Out: return .reg1Out(isOn: on)
-        case .reg2In: return .reg2In(isOn: on)
-        case .reg2Out: return .reg2Out(isOn: on)
-        case .reg3In: return .reg3In(isOn: on)
-        case .reg3Out: return .reg3Out(isOn: on)
-        case .reg4In: return .reg4In(isOn: on)
-        case .reg4Out: return .reg4Out(isOn: on)
-        case .romAddrIn: return .romAddrIn(isOn: on)
-        case .romValueOut: return .romValueOut(isOn: on)
-        case .romAddrBit9: return .romAddrBit9(isOn: on)
-        case .ramAddrIn: return .ramAddrIn(isOn: on)
-        case .ramValueIn: return .ramValueIn(isOn: on)
-        case .ramValueOut: return .ramValueOut(isOn: on)
-        case .pcIn: return .pcIn(isOn: on)
-        case .pcOut: return .pcOut(isOn: on)
-        case .pcInc: return .pcInc(isOn: on)
-        case .aluNeg: return .aluNeg(isOn: on)
-        case .aluOut: return .aluOut(isOn: on)
-        case .aluSetFlags: return .aluSetFlags(isOn: on)
-        case .irIn: return .irIn(isOn: on)
-        case .doIn: return .doIn(isOn: on)
-        case .halt: return .halt(isOn: on)
-        }
-    }
-}
-
 // MARK:- Mask & Pin
 
-extension ControlLine {
+extension ControlLineType {
     
     static let numberOfPins: Int = 24
     
     var mask: Int {
-        return 1 << (ControlLine.numberOfPins - pin)
+        return 1 << (ControlLineType.numberOfPins - pin)
     }
     
     var pin: Int {
@@ -179,7 +111,7 @@ extension ControlLine {
 
 // MARK:- Title
 
-extension ControlLine {
+extension ControlLineType {
     
     var title: String {
         switch self {
@@ -212,7 +144,7 @@ extension ControlLine {
 
 // MARK:- Descriptions
 
-extension ControlLine {
+extension ControlLineType {
     
     var description: String {
         switch self {
