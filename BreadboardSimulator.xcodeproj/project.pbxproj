@@ -407,18 +407,34 @@
 			path = Simulator;
 			sourceTree = "<group>";
 		};
-		8DEEEC3722FD9FB3008FF9B3 /* State */ = {
+		8D6F86D32308DEC200417D39 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				8D7875B522FCD5380056C028 /* Version.swift */,
+				8D34A71122F50EE20020AC89 /* Environment.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		8D6F86D42308DED000417D39 /* Computer */ = {
 			isa = PBXGroup;
 			children = (
 				8D6F86AD2308499200417D39 /* ComputerState.swift */,
 				8D6F86B12308499200417D39 /* Condition.swift */,
-				8D6F86AB2308499100417D39 /* ControlLine.swift */,
 				8D6F86AC2308499200417D39 /* Instruction.swift */,
+				8D6F86AB2308499100417D39 /* ControlLine.swift */,
 				8D6F86AE2308499200417D39 /* Operation.swift */,
 				8D6F86AF2308499200417D39 /* Register.swift */,
 				8D6F86B02308499200417D39 /* Step.swift */,
-				8D7875B522FCD5380056C028 /* Version.swift */,
-				8D34A71122F50EE20020AC89 /* Environment.swift */,
+			);
+			path = Computer;
+			sourceTree = "<group>";
+		};
+		8DEEEC3722FD9FB3008FF9B3 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				8D6F86D42308DED000417D39 /* Computer */,
+				8D6F86D32308DEC200417D39 /* Other */,
 			);
 			path = State;
 			sourceTree = "<group>";
