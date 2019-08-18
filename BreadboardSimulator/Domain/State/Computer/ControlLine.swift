@@ -8,12 +8,7 @@
 
 import Foundation
 
-struct ControlLine: Equatable, Codable {
-    let type: ControlLineType
-    var isOn: Bool
-}
-
-enum ControlLineType: String, Equatable, Codable {
+enum ControlLine: String, Equatable, Codable {
     
     // Registers
     case reg1In
@@ -53,7 +48,7 @@ enum ControlLineType: String, Equatable, Codable {
 
 // MARK:- Line Type
 
-extension ControlLineType {
+extension ControlLine {
     
     var isInputLine: Bool {
         switch self {
@@ -72,12 +67,12 @@ extension ControlLineType {
 
 // MARK:- Mask & Pin
 
-extension ControlLineType {
+extension ControlLine {
     
     static let numberOfPins: Int = 24
     
     var mask: Int {
-        return 1 << (ControlLineType.numberOfPins - pin)
+        return 1 << (ControlLine.numberOfPins - pin)
     }
     
     var pin: Int {
@@ -111,7 +106,7 @@ extension ControlLineType {
 
 // MARK:- Title
 
-extension ControlLineType {
+extension ControlLine {
     
     var title: String {
         switch self {
@@ -144,7 +139,7 @@ extension ControlLineType {
 
 // MARK:- Descriptions
 
-extension ControlLineType {
+extension ControlLine {
     
     var description: String {
         switch self {

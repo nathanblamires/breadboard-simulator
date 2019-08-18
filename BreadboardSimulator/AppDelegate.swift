@@ -14,6 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let _ = Store.instance.appState
+        
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let url = URL(fileURLWithPath: "justsomebytes", relativeTo: documentsDirectory)
+        let data = Data(bytes: [0, 1, 2, 4, 8, 16, 32, 64, 128, 255])
+        try! data.write(to: url)
+        
         return true
     }
 }

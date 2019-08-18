@@ -9,37 +9,39 @@
 import Foundation
 
 class Simulator {
+        
+    private let getComputerState: ()->(Computer)
+    private let updateComputerState: (Computer)->()
     
-    static var shared: Simulator = Simulator()
-    
-    private let stateAccess = ComputerStateAccessor()
+    init(store: Store) {
+        self.getComputerState = { return store.appState.computerState }
+        self.updateComputerState = { newState in store.appState.computerState = newState }
+    }
     
     func load(instructions: [Instruction]) {
-        var state = ComputerState()
+        var state = Computer()
         instructions.enumerated().forEach { index, instruction in
-            let machineCode = instruction.machineCode
-            let payload = instruction.payload ?? 0
-            state.romValues[index] = machineCode
-            state.romValues[index + 256] = payload
+            state.romValues[index] = instruction.details.machineCode
+            state.romValues[index + 256] = instruction.payload
         }
         state = refreshControlLines(state: state)
-        stateAccess.updateComputerState(state)
+        updateComputerState(state)
     }
     
     func clockTick() {
-        var state = stateAccess.state
+        var state = getComputerState()
         guard !state.isHaltOn else {
             state.finished = true
-            stateAccess.updateComputerState(state)
+            updateComputerState(state)
             return
         }
         state.clockVoltage = .high
         state = latchValuesIfNeeded(state: state)
         state = clockTock(with: state)
-        stateAccess.updateComputerState(state)
+        updateComputerState(state)
     }
     
-    private func clockTock(with state: ComputerState) -> ComputerState {
+    private func clockTock(with state: Computer) -> Computer {
         var stateCopy = state
         stateCopy.clockVoltage = .low
         stateCopy = tickStepCounter(state: stateCopy)
@@ -49,50 +51,49 @@ class Simulator {
     
     // MARK:- Control Line Updates
     
-    private func refreshControlLines(state: ComputerState) -> ComputerState {
+    private func refreshControlLines(state: Computer) -> Computer {
         var stateCopy = state
         guard
             let step = Step(rawValue: stateCopy.stepCounter),
-            let instruction = try? Instruction(machineCode: stateCopy.instructionRegister)
+            let instructionDetails = try? Instruction.Details(machineCode: stateCopy.instructionRegister)
         else { return stateCopy }
-        stateCopy = updateControlLines(state: stateCopy, instruction: instruction, step: step)
+        stateCopy = updateControlLines(state: stateCopy, instructionDetails: instructionDetails, step: step)
         return stateCopy
     }
     
-    private func tickStepCounter(state: ComputerState) -> ComputerState {
+    private func tickStepCounter(state: Computer) -> Computer {
         var stateCopy = state
         stateCopy.stepCounter = (stateCopy.stepCounter < (Step.numberOfSteps - 1)) ? stateCopy.stepCounter + 1 : 0
         return stateCopy
     }
     
-    private func updateControlLines(state: ComputerState, instruction: Instruction, step: Step) -> ComputerState {
-        var stateCopy = state
-        let input = (Int(step.rawValue) << 8) | Int(instruction.machineCode) | (stateCopy.isOverflow ? 1 : 0)
+    private func updateControlLines(state: Computer, instructionDetails: Instruction.Details, step: Step) -> Computer {
+        let input = (Int(step.rawValue) << 8) | Int(instructionDetails.machineCode) | (state.isOverflow ? 1 : 0)
         let output = Simulator.logic[input]
-        stateCopy.controlLines = stateCopy.controlLines.map { controlLine -> ControlLine in
-            let isOn = (output & controlLine.type.mask) > 0
-            return ControlLine(type: controlLine.type, isOn: isOn)
+        var stateCopy = state
+        state.controlLines.forEach {
+            stateCopy.controlLines[$0.key] = (output & $0.key.mask) > 0
         }
         return stateCopy
     }
     
     // MARK:- Value Updates
     
-    private func latchValuesIfNeeded(state: ComputerState) -> ComputerState {
+    private func latchValuesIfNeeded(state: Computer) -> Computer {
         var stateCopy = state
         let busValue = stateCopy.controlLines
-            .filter { $0.isOn && $0.type.isOutputLine }
-            .compactMap { return assertedValue(in: stateCopy, from: $0) }
+            .filter { $0.value && $0.key.isOutputLine }
+            .compactMap { return assertedValue(in: stateCopy, from: $0.key) }
             .first ?? 0
         stateCopy.controlLines
-            .filter { $0.isOn && $0.type.isInputLine }
-            .forEach { stateCopy = updateValue(in: stateCopy, correspondingTo: $0, with: busValue) }
+            .filter { $0.value && $0.key.isInputLine }
+            .forEach { stateCopy = updateValue(in: stateCopy, correspondingTo: $0.key, with: busValue) }
         return stateCopy
     }
     
-    private func updateValue(in state: ComputerState, correspondingTo controlLine: ControlLine, with value: UInt8) -> ComputerState {
+    private func updateValue(in state: Computer, correspondingTo controlLine: ControlLine, with value: UInt8) -> Computer {
         var stateCopy = state
-        switch controlLine.type {
+        switch controlLine {
         case .reg1In: stateCopy.register1 = value
         case .reg2In: stateCopy.register2 = value
         case .reg3In: stateCopy.register3 = value
@@ -132,8 +133,8 @@ class Simulator {
         return stateCopy
     }
     
-    private func assertedValue(in state: ComputerState, from controlLine: ControlLine) -> UInt8? {
-        switch controlLine.type {
+    private func assertedValue(in state: Computer, from controlLine: ControlLine) -> UInt8? {
+        switch controlLine {
         case .reg1Out: return state.register1
         case .reg2Out: return state.register2
         case .reg3Out: return state.register3

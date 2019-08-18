@@ -8,9 +8,18 @@
 
 import Foundation
 
-struct AppState: Equatable, Codable {
+struct AppState: Equatable {
     let version: Version = { try! Version(BundledConfig.versionString) }()
     let buildString: String = { BundledConfig.buildString }()
     var testValue: Int = 0
-    var computerState = ComputerState()
+    var computerState = Computer()
+    var currentProgram: BoardOutline? = BoardOutline()
+}
+
+extension AppState: Codable {
+    
+    enum CodingKeys: CodingKey {
+        case testValue
+        case computerState
+    }
 }

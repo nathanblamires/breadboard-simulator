@@ -109,12 +109,12 @@ class SimulatorViewController: UIViewController {
         }
     }
     
-    private func update(state: ComputerState) {
+    private func update(state: Computer) {
         updateInternalValues(with: state)
         updateControlLinesList(with: state)
     }
     
-    private func updateInternalValues(with state: ComputerState) {
+    private func updateInternalValues(with state: Computer) {
         reg1Label.text = state.register1.asBinaryText()
         reg2Label.text = state.register2.asBinaryText()
         reg3Label.text = state.register3.asBinaryText()
@@ -132,12 +132,12 @@ class SimulatorViewController: UIViewController {
         overflowLabel.text = "\(state.isOverflow)"
     }
     
-    private func updateControlLinesList(with state: ComputerState) {
+    private func updateControlLinesList(with state: Computer) {
         clearOutControlLinesList()
         state.controlLines
-            .filter { $0.isOn }
+            .filter { $0.value }
             .forEach {
-                let label = UILabel(text: $0.type.title)
+                let label = UILabel(text: $0.key.title)
                 activeControlLinesStackView.addArrangedSubview(label)
             }
     }

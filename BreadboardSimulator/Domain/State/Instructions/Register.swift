@@ -1,5 +1,5 @@
 //
-//  Condition.swift
+//  Register.swift
 //  BreadboardSimulator
 //
 //  Created by Nathan Blamires on 9/3/19.
@@ -8,7 +8,9 @@
 
 import Foundation
 
-enum Condition: UInt8 {
-    case noCondition
-    case aluOverflow
+enum Register: UInt8, Equatable, Codable {
+    case r1 = 0
+    case r2 = 1
+    case r3 = 2
+    case r4 = 3
 }

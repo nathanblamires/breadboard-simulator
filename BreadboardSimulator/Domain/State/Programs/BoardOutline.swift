@@ -1,32 +1,27 @@
 //
-//  Program.swift
-//  8BitSimulator
+//  BoardOutline.swift
+//  BreadboardSimulator
 //
-//  Created by Nathan Blamires on 11/3/19.
+//  Created by Nathan Blamires on 18/8/19.
 //  Copyright © 2019 nathanblamires. All rights reserved.
 //
 
 import Foundation
 
-struct Program {
+struct BoardOutline: Program, Equatable {
     
-    static var shared = Program()
-    
-    func generate() -> [Instruction] {
+    var instructions: [Instruction] = {
         var instructions: [Instruction] = []
-        for (address, value) in boardOutline {
+        for (address, value) in BoardOutline.values {
             instructions.append(contentsOf: [
-                Instruction.loadI(register: .r1, condition: .noCondition, value: value),
-                Instruction.store(register: .r1, condition: .noCondition, address: address + 128)
+                Instruction(details: .init(operation: .loadI, register: .r1, condition: .noCondition), payload: value),
+                Instruction(details: .init(operation: .store, register: .r1, condition: .noCondition), payload: address + 128)
             ])
         }
         return instructions
-    }
-}
-
-extension Program {
+    }()
     
-    var boardOutline: [UInt8: UInt8] {
+    static var values: [UInt8: UInt8] {
         
         return [
             // top

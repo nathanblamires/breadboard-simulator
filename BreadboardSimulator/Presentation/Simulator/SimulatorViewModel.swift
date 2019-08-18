@@ -10,10 +10,10 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class SimulatorViewModel {
+class SimulatorViewModel: ViewModel {
     
-    var simulator = Simulator.shared
-    var computerStateObservable: Observable<ComputerState>
+    var simulator: Simulator
+    var computerStateObservable: Observable<Computer>
     var dmdValuesObservable: Observable<[UInt8]>
     
     var nextButtonEnabled: Observable<Bool>
@@ -33,18 +33,23 @@ class SimulatorViewModel {
     
     // MARK:- Setup Methods
     
-    init() {
+    override init(store: Store = Store.instance) {
+        simulator = store.simulator!
         computerStateObservable = Store.instance.observable(of: \.computerState)
         dmdValuesObservable = Store.instance.observable(of: \.computerState.ioValues)
         nextButtonEnabled = Store.instance.observable(of: \AppState.computerState.finished).map { !$0 }
         isRunningObservable = BehaviorRelay<Bool>(value: false)
         runStopButtonText = isRunningObservable.map { $0 ? "Stop" : "Run" }
+        super.init(store: store)
         setupIsFinishedPropertyUpdating()
         loadProgram()
     }
     
     private func loadProgram() {
-        let instructions = Program.shared.generate()
+        guard let instructions = store.appState.currentProgram?.instructions else {
+            Logger.error(topic: .presentation, message: "currentProgram is nil")
+            return
+        }
         simulator.load(instructions: instructions)
     }
     

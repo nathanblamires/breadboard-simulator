@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Operation: UInt8, CaseIterable {
+enum Operation: UInt8, CaseIterable, Equatable, Codable {
     case noOp = 0
     case store = 1
     case load = 2
@@ -21,13 +21,4 @@ enum Operation: UInt8, CaseIterable {
     case jumpI = 9
     case out = 10
     case halt = 15
-}
-
-// MARK:- Data Accessors
-
-extension Operation {
-    
-    var opcode: UInt8 {
-        return rawValue
-    }
 }

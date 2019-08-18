@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ComputerState: Equatable, Codable {
+struct Computer: Equatable, Codable {
     
     var finished: Bool = false
     var clockVoltage: ClockVoltage = .low
@@ -20,8 +20,8 @@ struct ComputerState: Equatable, Codable {
     
     var programCounter: UInt8 = 0
     var instructionRegister: UInt8 = 0
-    var stepCounter: UInt8 = 0
     var decimalDisplay: UInt8 = 0
+    var stepCounter: UInt8 = 0
     
     var ramAddress: UInt8 = 0
     var ramValues: [UInt8] = Array(repeating: 0, count: 256)
@@ -43,42 +43,42 @@ struct ComputerState: Equatable, Codable {
         return isROMAddrBit9On ? romValues[Int(romAddress) + 256] : romValues[Int(romAddress)]
     }
 
-    var controlLines: [ControlLine] = [
+    var controlLines: [ControlLine: Bool] = [
         
         // Registers
-        ControlLine(type: .reg1In, isOn: false),
-        ControlLine(type: .reg1Out, isOn: false),
-        ControlLine(type: .reg2In, isOn: false),
-        ControlLine(type: .reg2In, isOn: false),
-        ControlLine(type: .reg3In, isOn: false),
-        ControlLine(type: .reg3Out, isOn: false),
-        ControlLine(type: .reg4In, isOn: false),
-        ControlLine(type: .reg4Out, isOn: false),
+        .reg1In: false,
+        .reg1Out: false,
+        .reg2In: false,
+        .reg2Out: false,
+        .reg3In: false,
+        .reg3Out: false,
+        .reg4In: false,
+        .reg4Out: false,
         
         // ROM
-        ControlLine(type: .romAddrIn, isOn: false),
-        ControlLine(type: .romValueOut, isOn: false),
-        ControlLine(type: .romAddrBit9, isOn: false),
+        .romAddrIn: false,
+        .romValueOut: false,
+        .romAddrBit9: false,
         
         // RAM
-        ControlLine(type: .ramAddrIn, isOn: false),
-        ControlLine(type: .ramValueIn, isOn: false),
-        ControlLine(type: .ramValueOut, isOn: false),
+        .ramAddrIn: false,
+        .ramValueIn: false,
+        .ramValueOut: false,
         
         // Program Counter
-        ControlLine(type: .pcIn, isOn: false),
-        ControlLine(type: .pcOut, isOn: false),
-        ControlLine(type: .pcInc, isOn: false),
+        .pcIn: false,
+        .pcOut: false,
+        .pcInc: false,
         
         // ALU
-        ControlLine(type: .aluNeg, isOn: false),
-        ControlLine(type: .aluOut, isOn: false),
-        ControlLine(type: .aluSetFlags, isOn: false),
+        .aluNeg: false,
+        .aluOut: false,
+        .aluSetFlags: false,
         
         // Other
-        ControlLine(type: .irIn, isOn: false),
-        ControlLine(type: .doIn, isOn: false),
-        ControlLine(type: .halt, isOn: false)
+        .irIn: false,
+        .doIn: false,
+        .halt: false
     ]
     
     // DMD
@@ -92,18 +92,18 @@ struct ComputerState: Equatable, Codable {
 
 // MARK: Helper Computed Properties
 
-extension ComputerState {
+extension Computer {
     
     internal var isALUNegFlagOn: Bool {
-        controlLines.first(where: { $0.type == .aluNeg })!.isOn
+        controlLines.first(where: { $0.key == .aluNeg })!.value
     }
     
     internal var isROMAddrBit9On: Bool {
-        controlLines.first(where: { $0.type == .romAddrBit9 })!.isOn
+        controlLines.first(where: { $0.key == .romAddrBit9 })!.value
     }
     
     internal var isHaltOn: Bool {
-        controlLines.first(where: { $0.type == .halt })!.isOn
+        controlLines.first(where: { $0.key == .halt })!.value
     }
 }
 

@@ -23,8 +23,6 @@
 		8D34A71D22F50EFB0020AC89 /* UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34A71A22F50EFA0020AC89 /* UseCases.swift */; };
 		8D34A71E22F50EFB0020AC89 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34A71B22F50EFA0020AC89 /* Store.swift */; };
 		8D34A71F22F50EFB0020AC89 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34A71C22F50EFA0020AC89 /* AppState.swift */; };
-		8D34A72422F50F450020AC89 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34A72122F50F450020AC89 /* HomeViewController.swift */; };
-		8D34A72622F50F450020AC89 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34A72322F50F450020AC89 /* HomeViewModel.swift */; };
 		8D34A72822F50F570020AC89 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34A72722F50F570020AC89 /* ViewModel.swift */; };
 		8D41946D22FE85D200C2E033 /* CoreiOS in Frameworks */ = {isa = PBXBuildFile; productRef = 8D41946C22FE85D200C2E033 /* CoreiOS */; };
 		8D687D9322F547020044FA00 /* UseCases+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D687D9222F547020044FA00 /* UseCases+Init.swift */; };
@@ -32,7 +30,7 @@
 		8D6EBE5922FE44FE0001110C /* VersionSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6EBE5822FE44FE0001110C /* VersionSpecs.swift */; };
 		8D6F86B22308499200417D39 /* ControlLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86AB2308499100417D39 /* ControlLine.swift */; };
 		8D6F86B32308499200417D39 /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86AC2308499200417D39 /* Instruction.swift */; };
-		8D6F86B42308499200417D39 /* ComputerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86AD2308499200417D39 /* ComputerState.swift */; };
+		8D6F86B42308499200417D39 /* Computer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86AD2308499200417D39 /* Computer.swift */; };
 		8D6F86B52308499200417D39 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86AE2308499200417D39 /* Operation.swift */; };
 		8D6F86B62308499200417D39 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86AF2308499200417D39 /* Register.swift */; };
 		8D6F86B72308499200417D39 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86B02308499200417D39 /* Step.swift */; };
@@ -46,7 +44,6 @@
 		8D6F86C723084AA800417D39 /* SimulatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86C023084AA800417D39 /* SimulatorViewModel.swift */; };
 		8D6F86C823084AA800417D39 /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86C123084AA800417D39 /* HelperExtensions.swift */; };
 		8D6F86CC23084B0500417D39 /* Simulator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D6F86CB23084B0500417D39 /* Simulator.storyboard */; };
-		8D6F86D023084B9600417D39 /* ComputerStateAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86CD23084B9500417D39 /* ComputerStateAccessor.swift */; };
 		8D6F86D123084B9600417D39 /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86CE23084B9500417D39 /* Program.swift */; };
 		8D6F86D223084B9600417D39 /* Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86CF23084B9600417D39 /* Simulator.swift */; };
 		8D7875B622FCD5380056C028 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7875B522FCD5380056C028 /* Version.swift */; };
@@ -55,6 +52,7 @@
 		8DC0D52E230584610022E5BB /* UIColor+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0D52B230584610022E5BB /* UIColor+Init.swift */; };
 		8DC0D52F230584610022E5BB /* UIImage+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0D52C230584610022E5BB /* UIImage+Init.swift */; };
 		8DC0D530230584610022E5BB /* UIStoryboard+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0D52D230584610022E5BB /* UIStoryboard+Init.swift */; };
+		8DC6019C2308EED800CBA1B7 /* BoardOutline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC6019B2308EED800CBA1B7 /* BoardOutline.swift */; };
 		C323DD158787E167B0BD7D92 /* libPods-BreadboardSimulatorUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B836D3B6E3AE6A16BB5F0E1E /* libPods-BreadboardSimulatorUITests.a */; };
 		E8FD4FC47237244298185609 /* Pods_BreadboardSimulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1575A7017CFBF21D3D3D6FF4 /* Pods_BreadboardSimulatorTests.framework */; };
 /* End PBXBuildFile section */
@@ -116,8 +114,6 @@
 		8D34A71A22F50EFA0020AC89 /* UseCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCases.swift; sourceTree = "<group>"; };
 		8D34A71B22F50EFA0020AC89 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		8D34A71C22F50EFA0020AC89 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		8D34A72122F50F450020AC89 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		8D34A72322F50F450020AC89 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8D34A72722F50F570020AC89 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		8D34A74122F516040020AC89 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8D687D9222F547020044FA00 /* UseCases+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UseCases+Init.swift"; sourceTree = "<group>"; };
@@ -126,7 +122,7 @@
 		8D6EBE5C22FE7CDD0001110C /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		8D6F86AB2308499100417D39 /* ControlLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlLine.swift; sourceTree = "<group>"; };
 		8D6F86AC2308499200417D39 /* Instruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
-		8D6F86AD2308499200417D39 /* ComputerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerState.swift; sourceTree = "<group>"; };
+		8D6F86AD2308499200417D39 /* Computer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
 		8D6F86AE2308499200417D39 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		8D6F86AF2308499200417D39 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		8D6F86B02308499200417D39 /* Step.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
@@ -140,7 +136,6 @@
 		8D6F86C023084AA800417D39 /* SimulatorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulatorViewModel.swift; sourceTree = "<group>"; };
 		8D6F86C123084AA800417D39 /* HelperExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		8D6F86CB23084B0500417D39 /* Simulator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Simulator.storyboard; sourceTree = "<group>"; };
-		8D6F86CD23084B9500417D39 /* ComputerStateAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerStateAccessor.swift; sourceTree = "<group>"; };
 		8D6F86CE23084B9500417D39 /* Program.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		8D6F86CF23084B9600417D39 /* Simulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
 		8D7875B522FCD5380056C028 /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
@@ -150,6 +145,7 @@
 		8DC0D52B230584610022E5BB /* UIColor+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Init.swift"; sourceTree = "<group>"; };
 		8DC0D52C230584610022E5BB /* UIImage+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Init.swift"; sourceTree = "<group>"; };
 		8DC0D52D230584610022E5BB /* UIStoryboard+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Init.swift"; sourceTree = "<group>"; };
+		8DC6019B2308EED800CBA1B7 /* BoardOutline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardOutline.swift; sourceTree = "<group>"; };
 		920B64E9E082630C3D85BF8A /* Pods-BreadboardSimulatorUITests.debug-dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreadboardSimulatorUITests.debug-dev.xcconfig"; path = "Target Support Files/Pods-BreadboardSimulatorUITests/Pods-BreadboardSimulatorUITests.debug-dev.xcconfig"; sourceTree = "<group>"; };
 		A9146973AD84054C0B578E97 /* Pods-BreadboardSimulator.release-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreadboardSimulator.release-test.xcconfig"; path = "Target Support Files/Pods-BreadboardSimulator/Pods-BreadboardSimulator.release-test.xcconfig"; sourceTree = "<group>"; };
 		A9B7C7A8F249D3748B0A945D /* Pods-BreadboardSimulatorUITests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreadboardSimulatorUITests.test.xcconfig"; path = "Target Support Files/Pods-BreadboardSimulatorUITests/Pods-BreadboardSimulatorUITests.test.xcconfig"; sourceTree = "<group>"; };
@@ -296,9 +292,7 @@
 			children = (
 				8D34A6DB22F50DD60020AC89 /* LaunchScreen.storyboard */,
 				8D34A72722F50F570020AC89 /* ViewModel.swift */,
-				8D6F86C923084AB100417D39 /* DMD View */,
 				8D6F86CA23084AE200417D39 /* Simulator */,
-				8D34A72022F50F360020AC89 /* Home */,
 				8D4194AE22FEB85900C2E033 /* Extensions */,
 			);
 			path = Presentation;
@@ -310,9 +304,7 @@
 				8D34A71C22F50EFA0020AC89 /* AppState.swift */,
 				8D34A71B22F50EFA0020AC89 /* Store.swift */,
 				8D34A71A22F50EFA0020AC89 /* UseCases.swift */,
-				8D6F86CD23084B9500417D39 /* ComputerStateAccessor.swift */,
-				8D6F86CE23084B9500417D39 /* Program.swift */,
-				8D6F86CF23084B9600417D39 /* Simulator.swift */,
+				8DC6019E23090B9600CBA1B7 /* Simulator */,
 				8DEEEC3722FD9FB3008FF9B3 /* State */,
 				8D34A71022F50ED40020AC89 /* Use Cases */,
 			);
@@ -346,15 +338,6 @@
 				8DC0D529230582620022E5BB /* AppLifecycleUseCase.swift */,
 			);
 			path = "Use Cases";
-			sourceTree = "<group>";
-		};
-		8D34A72022F50F360020AC89 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				8D34A72322F50F450020AC89 /* HomeViewModel.swift */,
-				8D34A72122F50F450020AC89 /* HomeViewController.swift */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		8D4194AE22FEB85900C2E033 /* Extensions */ = {
@@ -399,6 +382,7 @@
 		8D6F86CA23084AE200417D39 /* Simulator */ = {
 			isa = PBXGroup;
 			children = (
+				8D6F86C923084AB100417D39 /* DMD View */,
 				8D6F86CB23084B0500417D39 /* Simulator.storyboard */,
 				8D6F86BC23084AA700417D39 /* SimulationView.xib */,
 				8D6F86BB23084AA700417D39 /* SimulatorViewController.swift */,
@@ -419,21 +403,47 @@
 		8D6F86D42308DED000417D39 /* Computer */ = {
 			isa = PBXGroup;
 			children = (
-				8D6F86AD2308499200417D39 /* ComputerState.swift */,
-				8D6F86B12308499200417D39 /* Condition.swift */,
-				8D6F86AC2308499200417D39 /* Instruction.swift */,
+				8D6F86AD2308499200417D39 /* Computer.swift */,
 				8D6F86AB2308499100417D39 /* ControlLine.swift */,
-				8D6F86AE2308499200417D39 /* Operation.swift */,
-				8D6F86AF2308499200417D39 /* Register.swift */,
-				8D6F86B02308499200417D39 /* Step.swift */,
 			);
 			path = Computer;
+			sourceTree = "<group>";
+		};
+		8DC6019A2308EEB800CBA1B7 /* Programs */ = {
+			isa = PBXGroup;
+			children = (
+				8D6F86CE23084B9500417D39 /* Program.swift */,
+				8DC6019B2308EED800CBA1B7 /* BoardOutline.swift */,
+			);
+			path = Programs;
+			sourceTree = "<group>";
+		};
+		8DC6019D23090B0400CBA1B7 /* Instructions */ = {
+			isa = PBXGroup;
+			children = (
+				8D6F86AC2308499200417D39 /* Instruction.swift */,
+				8D6F86AE2308499200417D39 /* Operation.swift */,
+				8D6F86AF2308499200417D39 /* Register.swift */,
+				8D6F86B12308499200417D39 /* Condition.swift */,
+			);
+			path = Instructions;
+			sourceTree = "<group>";
+		};
+		8DC6019E23090B9600CBA1B7 /* Simulator */ = {
+			isa = PBXGroup;
+			children = (
+				8D6F86CF23084B9600417D39 /* Simulator.swift */,
+				8D6F86B02308499200417D39 /* Step.swift */,
+			);
+			path = Simulator;
 			sourceTree = "<group>";
 		};
 		8DEEEC3722FD9FB3008FF9B3 /* State */ = {
 			isa = PBXGroup;
 			children = (
 				8D6F86D42308DED000417D39 /* Computer */,
+				8DC6019D23090B0400CBA1B7 /* Instructions */,
+				8DC6019A2308EEB800CBA1B7 /* Programs */,
 				8D6F86D32308DEC200417D39 /* Other */,
 			);
 			path = State;
@@ -700,7 +710,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D6F86B42308499200417D39 /* ComputerState.swift in Sources */,
+				8D6F86B42308499200417D39 /* Computer.swift in Sources */,
 				8DC0D52F230584610022E5BB /* UIImage+Init.swift in Sources */,
 				8D34A70F22F50EC00020AC89 /* Logger.swift in Sources */,
 				8D6F86C623084AA800417D39 /* DMDView.swift in Sources */,
@@ -718,20 +728,18 @@
 				8D6F86B52308499200417D39 /* Operation.swift in Sources */,
 				8DC0D52E230584610022E5BB /* UIColor+Init.swift in Sources */,
 				8D6F86D123084B9600417D39 /* Program.swift in Sources */,
-				8D34A72622F50F450020AC89 /* HomeViewModel.swift in Sources */,
 				8D34A71D22F50EFB0020AC89 /* UseCases.swift in Sources */,
 				8D6F86BA23084A7F00417D39 /* XIBView.swift in Sources */,
 				8D34A70922F50E8C0020AC89 /* BundledConfig.swift in Sources */,
 				8D6F86B72308499200417D39 /* Step.swift in Sources */,
 				8D6F86C823084AA800417D39 /* HelperExtensions.swift in Sources */,
 				8D6F86C523084AA800417D39 /* LEDView.swift in Sources */,
+				8DC6019C2308EED800CBA1B7 /* BoardOutline.swift in Sources */,
 				8DC0D530230584610022E5BB /* UIStoryboard+Init.swift in Sources */,
-				8D6F86D023084B9600417D39 /* ComputerStateAccessor.swift in Sources */,
 				8D6F86B82308499200417D39 /* Condition.swift in Sources */,
 				8D6F86D223084B9600417D39 /* Simulator.swift in Sources */,
 				8D6F86B22308499200417D39 /* ControlLine.swift in Sources */,
 				8D34A6D322F50DD40020AC89 /* SceneDelegate.swift in Sources */,
-				8D34A72422F50F450020AC89 /* HomeViewController.swift in Sources */,
 				8D6F86B32308499200417D39 /* Instruction.swift in Sources */,
 				8DC0D52A230582620022E5BB /* AppLifecycleUseCase.swift in Sources */,
 			);

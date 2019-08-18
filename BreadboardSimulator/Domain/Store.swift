@@ -28,12 +28,14 @@ class Store {
     }
     
     let useCases: UseCases
+    var simulator: Simulator?
 
     init(appState: AppState, useCases: UseCases) {
         appStateSubject = BehaviorRelay<AppState>(value: appState)
         self.appState = appState
         self.useCases = useCases
         useCases.setup(store: self)
+        simulator = Simulator(store: self)
     }
 }
 
