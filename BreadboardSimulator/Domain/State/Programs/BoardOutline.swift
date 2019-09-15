@@ -14,8 +14,8 @@ struct BoardOutline: Program, Equatable {
         var instructions: [Instruction] = []
         for (address, value) in BoardOutline.values {
             instructions.append(contentsOf: [
-                Instruction(details: .init(operation: .loadI, register: .r1, condition: .noCondition), payload: value),
-                Instruction(details: .init(operation: .store, register: .r1, condition: .noCondition), payload: address + 128)
+                Instruction(operation: .loadI, register: .r1, condition: .noCondition, payload: value),
+                Instruction(operation: .store, register: .r1, condition: .noCondition, payload: address + 128)
             ])
         }
         return instructions

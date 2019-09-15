@@ -21,8 +21,8 @@ class Simulator {
     func load(instructions: [Instruction]) {
         var state = Computer()
         instructions.enumerated().forEach { index, instruction in
-            state.romValues[index] = instruction.details.machineCode
-            state.romValues[index + 256] = instruction.payload
+            state.romValues[index] = instruction.upperByte
+            state.romValues[index + 256] = instruction.lowerByte
         }
         state = refreshControlLines(state: state)
         updateComputerState(state)
@@ -55,9 +55,9 @@ class Simulator {
         var stateCopy = state
         guard
             let step = Step(rawValue: stateCopy.stepCounter),
-            let instructionDetails = try? Instruction.Details(machineCode: stateCopy.instructionRegister)
+            let instruction = try? Instruction(upperByte: stateCopy.instructionRegister)
         else { return stateCopy }
-        stateCopy = updateControlLines(state: stateCopy, instructionDetails: instructionDetails, step: step)
+        stateCopy = updateControlLines(state: stateCopy, instruction: instruction, step: step)
         return stateCopy
     }
     
@@ -67,8 +67,8 @@ class Simulator {
         return stateCopy
     }
     
-    private func updateControlLines(state: Computer, instructionDetails: Instruction.Details, step: Step) -> Computer {
-        let input = (Int(step.rawValue) << 8) | Int(instructionDetails.machineCode) | (state.isOverflow ? 1 : 0)
+    private func updateControlLines(state: Computer, instruction: Instruction, step: Step) -> Computer {
+        let input = (Int(step.rawValue) << 8) | Int(instruction.upperByte) | (state.isOverflow ? 1 : 0)
         let output = Simulator.logic[input]
         var stateCopy = state
         state.controlLines.forEach {
