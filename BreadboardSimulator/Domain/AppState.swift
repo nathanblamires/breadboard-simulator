@@ -13,7 +13,8 @@ struct AppState: Equatable {
     let buildString: String = { BundledConfig.buildString }()
     var testValue: Int = 0
     var computerState = Computer()
-    var currentProgram: BoardOutline? = BoardOutline()
+    // var currentProgram: BoardOutline? = BoardOutline()
+    var currentProgram: Fibonacci? = Fibonacci()
 }
 
 extension AppState: Codable {
