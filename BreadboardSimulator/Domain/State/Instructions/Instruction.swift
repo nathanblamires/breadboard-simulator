@@ -11,11 +11,11 @@ import Foundation
 struct Instruction: Equatable, Codable {
     
     let operation: Operation
-    let register: Register
+    let register: Register?
     let condition: Condition
     let payload: UInt8?
     
-    init(operation: Operation, register: Register, condition: Condition, payload: UInt8) {
+    init(operation: Operation, register: Register? = nil, condition: Condition = .noCondition, payload: UInt8? = nil) {
         self.operation = operation
         self.register = register
         self.condition = condition
@@ -39,16 +39,13 @@ struct Instruction: Equatable, Codable {
     
     var upperByte: UInt8 {
         let operationValue = (operation.rawValue << 4) & 0b1111_0000
-        let registerValue = ((register.rawValue) << 2) & 0b0000_1100
+        let registerValue = ((register?.rawValue ?? 0) << 2) & 0b0000_1100
         let conditionValue = ((condition.rawValue) << 1) & 0b0000_0010
         return operationValue | registerValue | conditionValue
     }
     
     var lowerByte: UInt8 {
-        guard let payload = self.payload else {
-            fatalError("Requesting lowerByte when it was never provided")
-        }
-        return payload
+        payload ?? 0
     }
     
     enum Error: Swift.Error {
