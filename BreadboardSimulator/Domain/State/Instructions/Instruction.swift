@@ -60,7 +60,7 @@ extension Instruction {
     static var noOp = Instruction(operation: .noOp)
     
     /// Stores the value in the specified register in RAM at the specified address, given any specified condition is true
-    static func store(valueInRegister register: Register, inMemoryAddress address: UInt8, given condition: Condition = .noCondition) -> Instruction {
+    static func store(valueInRegister register: Register, atMemoryAddress address: UInt8, given condition: Condition = .noCondition) -> Instruction {
         Instruction(operation: .store, register: register, condition: condition, payload: address)
     }
     
@@ -69,7 +69,7 @@ extension Instruction {
         Instruction(operation: .load, register: register, condition: condition, payload: address)
     }
     
-    /// Loads the passed value into the specified register, given any specified condition is true
+    /// Loads the specified value into the specified register, given any specified condition is true
     static func load(_ value: UInt8, intoRegister register: Register, given condition: Condition = .noCondition) -> Instruction {
         Instruction(operation: .loadI, register: register, condition: condition, payload: value)
     }
@@ -85,7 +85,7 @@ extension Instruction {
     }
     
     /// Loads the value at the specified RAM address into `reg2`, then subtracts it from the value in `reg1`, and puts the result in `reg3`, given any specified condition is true
-    static func subtractFromValueInReg1(valueInMemoryAddress address: UInt8, given condition: Condition = .noCondition) -> Instruction {
+    static func subtractFromValueInReg1(valueAtMemoryAddress address: UInt8, given condition: Condition = .noCondition) -> Instruction {
         Instruction(operation: .sub, register: nil, condition: condition, payload: address)
     }
     
