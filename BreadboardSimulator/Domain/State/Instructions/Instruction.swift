@@ -71,7 +71,7 @@ extension Instruction {
     
     /// Loads the passed value into the specified register, given any specified condition is true
     static func load(_ value: UInt8, intoRegister register: Register, given condition: Condition = .noCondition) -> Instruction {
-        Instruction(operation: .load, register: register, condition: condition, payload: value)
+        Instruction(operation: .loadI, register: register, condition: condition, payload: value)
     }
     
     /// Loads the value at the specified RAM address into `reg2`, then adds its value to the value in `reg1`, and puts the result in `reg3`, given any specified condition is true
