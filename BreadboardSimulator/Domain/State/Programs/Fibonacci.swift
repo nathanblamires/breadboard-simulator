@@ -33,4 +33,47 @@ struct Fibonacci: Program, Equatable {
         Instruction(operation: .out, register: .r3, condition: .noCondition, payload: 0),
         Instruction(operation: .jumpI, register: .r4, condition: .noCondition, payload: 2)
     ]
+    
+    @ProgramBuilder
+    func instructionss() -> ProgramCode {
+        
+        ForLoop(5) {
+            Instruction.output(valueInRegister: .r3)
+        }
+        
+        
+        
+        Instruction.load(0, intoRegister: .r2)
+        Instruction.load(1, intoRegister: .r3)
+        Instruction.store(valueInRegister: .r2, atMemoryAddress: 0)
+        Instruction.store(valueInRegister: .r3, atMemoryAddress: 1)
+        Instruction.load(valueAtMemoryAddress: 0, intoRegister: .r1)
+        Instruction.sumValueInReg1(withValueAtMemoryAddress: 1)
+        Instruction.jump(toInstructionAdress: 0, given: .aluOverflow)
+        Instruction.output(valueInRegister: .r3)
+        Instruction.jump(toInstructionAdress: 2)
+    }
+    
+    func ForLoop(_ count: UInt8, @ProgramBuilder code: ()->(ProgramCode)) -> ProgramCode {
+        var instructions: [ProgramCode] = []
+        instructions.append(Instruction.load(UInt8.max - count + 1, intoRegister: .r1))
+        instructions.append(code())
+        instructions.append(Instruction.sumValueInReg1(withValue: 1))
+        instructions.append(Instruction.jump(toInstructionAdress: 0, given: .aluOverflow))
+        return ProgramBlock(items: instructions)
+    }
+}
+
+protocol ProgramCode {}
+extension Instruction: ProgramCode {}
+struct ProgramBlock: ProgramCode {
+    let items: [ProgramCode]
+}
+
+@_functionBuilder
+class ProgramBuilder {
+
+    static func buildBlock(_ children: ProgramCode...) -> ProgramCode {
+        ProgramBlock(items: children)
+    }
 }
