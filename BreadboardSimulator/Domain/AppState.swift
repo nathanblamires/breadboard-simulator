@@ -14,7 +14,9 @@ struct AppState: Equatable {
     var testValue: Int = 0
     var computerState = Computer()
     // var currentProgram: BoardOutline? = BoardOutline()
-    var currentProgram: Fibonacci? = Fibonacci()
+    // var currentProgram: Fibonacci? = Fibonacci()
+    var currentProgram: TwoTimesTables? = TwoTimesTables()
+    
 }
 
 extension AppState: Codable {

@@ -37,7 +37,6 @@
 		8D6F86B82308499200417D39 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86B12308499200417D39 /* Condition.swift */; };
 		8D6F86BA23084A7F00417D39 /* XIBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86B923084A7F00417D39 /* XIBView.swift */; };
 		8D6F86C223084AA800417D39 /* SimulatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86BB23084AA700417D39 /* SimulatorViewController.swift */; };
-		8D6F86C323084AA800417D39 /* SimulationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D6F86BC23084AA700417D39 /* SimulationView.xib */; };
 		8D6F86C423084AA800417D39 /* DMDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D6F86BD23084AA800417D39 /* DMDView.xib */; };
 		8D6F86C523084AA800417D39 /* LEDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86BE23084AA800417D39 /* LEDView.swift */; };
 		8D6F86C623084AA800417D39 /* DMDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F86BF23084AA800417D39 /* DMDView.swift */; };
@@ -53,6 +52,7 @@
 		8DC0D52F230584610022E5BB /* UIImage+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0D52C230584610022E5BB /* UIImage+Init.swift */; };
 		8DC0D530230584610022E5BB /* UIStoryboard+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0D52D230584610022E5BB /* UIStoryboard+Init.swift */; };
 		8DC6019C2308EED800CBA1B7 /* BoardOutline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC6019B2308EED800CBA1B7 /* BoardOutline.swift */; };
+		8DE000D423EB6A860014CDAA /* TwoTimesTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE000D323EB6A860014CDAA /* TwoTimesTables.swift */; };
 		8DEDCE3223CB114800022280 /* Fibonacci.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEDCE3123CB114800022280 /* Fibonacci.swift */; };
 		C323DD158787E167B0BD7D92 /* libPods-BreadboardSimulatorUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B836D3B6E3AE6A16BB5F0E1E /* libPods-BreadboardSimulatorUITests.a */; };
 		E8FD4FC47237244298185609 /* Pods_BreadboardSimulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1575A7017CFBF21D3D3D6FF4 /* Pods_BreadboardSimulatorTests.framework */; };
@@ -130,7 +130,6 @@
 		8D6F86B12308499200417D39 /* Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
 		8D6F86B923084A7F00417D39 /* XIBView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XIBView.swift; sourceTree = "<group>"; };
 		8D6F86BB23084AA700417D39 /* SimulatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulatorViewController.swift; sourceTree = "<group>"; };
-		8D6F86BC23084AA700417D39 /* SimulationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimulationView.xib; sourceTree = "<group>"; };
 		8D6F86BD23084AA800417D39 /* DMDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMDView.xib; sourceTree = "<group>"; };
 		8D6F86BE23084AA800417D39 /* LEDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEDView.swift; sourceTree = "<group>"; };
 		8D6F86BF23084AA800417D39 /* DMDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMDView.swift; sourceTree = "<group>"; };
@@ -147,6 +146,7 @@
 		8DC0D52C230584610022E5BB /* UIImage+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Init.swift"; sourceTree = "<group>"; };
 		8DC0D52D230584610022E5BB /* UIStoryboard+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Init.swift"; sourceTree = "<group>"; };
 		8DC6019B2308EED800CBA1B7 /* BoardOutline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardOutline.swift; sourceTree = "<group>"; };
+		8DE000D323EB6A860014CDAA /* TwoTimesTables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoTimesTables.swift; sourceTree = "<group>"; };
 		8DEDCE3123CB114800022280 /* Fibonacci.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fibonacci.swift; sourceTree = "<group>"; };
 		920B64E9E082630C3D85BF8A /* Pods-BreadboardSimulatorUITests.debug-dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreadboardSimulatorUITests.debug-dev.xcconfig"; path = "Target Support Files/Pods-BreadboardSimulatorUITests/Pods-BreadboardSimulatorUITests.debug-dev.xcconfig"; sourceTree = "<group>"; };
 		A9146973AD84054C0B578E97 /* Pods-BreadboardSimulator.release-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreadboardSimulator.release-test.xcconfig"; path = "Target Support Files/Pods-BreadboardSimulator/Pods-BreadboardSimulator.release-test.xcconfig"; sourceTree = "<group>"; };
@@ -386,7 +386,6 @@
 			children = (
 				8D6F86C923084AB100417D39 /* DMD View */,
 				8D6F86CB23084B0500417D39 /* Simulator.storyboard */,
-				8D6F86BC23084AA700417D39 /* SimulationView.xib */,
 				8D6F86BB23084AA700417D39 /* SimulatorViewController.swift */,
 				8D6F86C023084AA800417D39 /* SimulatorViewModel.swift */,
 			);
@@ -417,6 +416,7 @@
 				8D6F86CE23084B9500417D39 /* Program.swift */,
 				8DC6019B2308EED800CBA1B7 /* BoardOutline.swift */,
 				8DEDCE3123CB114800022280 /* Fibonacci.swift */,
+				8DE000D323EB6A860014CDAA /* TwoTimesTables.swift */,
 			);
 			path = Programs;
 			sourceTree = "<group>";
@@ -578,7 +578,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D6F86C323084AA800417D39 /* SimulationView.xib in Resources */,
 				8D34A6DD22F50DD60020AC89 /* LaunchScreen.storyboard in Resources */,
 				8D34A70A22F50E8C0020AC89 /* Prod.plist in Resources */,
 				8D6F86CC23084B0500417D39 /* Simulator.storyboard in Resources */,
@@ -733,6 +732,7 @@
 				8D6F86D123084B9600417D39 /* Program.swift in Sources */,
 				8D34A71D22F50EFB0020AC89 /* UseCases.swift in Sources */,
 				8D6F86BA23084A7F00417D39 /* XIBView.swift in Sources */,
+				8DE000D423EB6A860014CDAA /* TwoTimesTables.swift in Sources */,
 				8D34A70922F50E8C0020AC89 /* BundledConfig.swift in Sources */,
 				8D6F86B72308499200417D39 /* Step.swift in Sources */,
 				8D6F86C823084AA800417D39 /* HelperExtensions.swift in Sources */,
