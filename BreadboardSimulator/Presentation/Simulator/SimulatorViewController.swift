@@ -51,7 +51,7 @@ class SimulatorViewController: UIViewController {
     
     private func setupStateUpdating() {
         viewModel.computerStateObservable
-            .throttle(0.5, latest: true, scheduler: MainScheduler.instance)
+            //.throttle(0.5, latest: true, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [unowned self] state in
                 self.update(state: state)
             })

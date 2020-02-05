@@ -115,9 +115,9 @@ class SimulatorViewModel: ViewModel {
     private func trackRunningClockSpeed(clockTick: Date) {
         let newSecond = clockTick.timeIntervalSince1970 - firstClockTickOfSecond.timeIntervalSince1970 > 1
         if newSecond {
-            firstClockTickOfSecond = clockTick
-            clockTicksThisSecond = 1
             print("Hertz: \(clockTicksThisSecond)")
+            firstClockTickOfSecond = clockTick
+            clockTicksThisSecond = 0
         } else {
             clockTicksThisSecond += 1
         }
