@@ -47,7 +47,6 @@ class SimulatorViewController: UIViewController {
         setupStateUpdating()
         setupControls()
         setupSpeedSlider()
-        updateSpeedLabel(value: Double(self.speedSlider.value))
     }
     
     private func setupStateUpdating() {
@@ -75,19 +74,20 @@ class SimulatorViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func updateSpeedLabel(value: Double) {
-        let hertz = round(1.0 / value)
-        self.speedLabel.text = "\(hertz) hertz"
+    private func updateSpeedLabel(value: Int) {
+        self.speedLabel.text = "\(value) hertz"
     }
     
     private func setupSpeedSlider() {
-        speedSlider.value = Float(viewModel.speed)
+        viewModel.updateRunSpeed(viewModel.speedInHertz)
+        updateSpeedLabel(value: viewModel.speedInHertz)
+        speedSlider.value = Float(viewModel.speedInHertz)
         speedSlider.rx.controlEvent([.valueChanged])
             .throttle(0.1, scheduler: MainScheduler.instance)
-            //.debounce(0.25, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [unowned self] in
-                self.viewModel.updateRunSpeed(Double(self.speedSlider.value))
-                self.updateSpeedLabel(value: Double(self.speedSlider.value))
+                let speedInHertz = Int(self.speedSlider.value.rounded())
+                self.viewModel.updateRunSpeed(speedInHertz)
+                self.updateSpeedLabel(value: speedInHertz)
             })
             .disposed(by: disposeBag)
     }

@@ -28,7 +28,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="9.9999999999999995e-07" maxValue="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="XRO-N9-8V6">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="1" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="XRO-N9-8V6">
                                         <rect key="frame" x="98" y="0.0" width="698" height="46"/>
                                     </slider>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGB-XZ-jXG">

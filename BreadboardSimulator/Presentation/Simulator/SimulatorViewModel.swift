@@ -23,7 +23,7 @@ class SimulatorViewModel: ViewModel {
     
     private var timerDisposeBag = DisposeBag()
     private var runProgramTimer: Timer?
-    private(set) var speed: Double = 1.0 / 10_000 
+    private(set) var speedInHertz: Int = 10
     
     // clock speed tracking
     private var firstClockTickOfSecond: Date = Date()
@@ -79,8 +79,8 @@ class SimulatorViewModel: ViewModel {
         simulator.clockTick()
     }
     
-    func updateRunSpeed(_ speed: Double) {
-        self.speed = speed
+    func updateRunSpeed(_ speed: Int) {
+        self.speedInHertz = speed
         timerDisposeBag = DisposeBag()
         if isRunningObservable.value {
             runProgram()
@@ -94,7 +94,7 @@ class SimulatorViewModel: ViewModel {
             loadProgram()
         }
         isRunningObservable.accept(true)
-        Observable<Int>.interval(speed, scheduler: MainScheduler.instance)
+        Observable<Int>.interval(1.0 / Double(speedInHertz), scheduler: MainScheduler.instance)
             .withLatestFrom(computerStateObservable)
             .subscribe(onNext: { state in
                 if state.finished {
