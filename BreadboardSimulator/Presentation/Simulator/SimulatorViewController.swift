@@ -83,7 +83,8 @@ class SimulatorViewController: UIViewController {
     private func setupSpeedSlider() {
         speedSlider.value = Float(viewModel.speed)
         speedSlider.rx.controlEvent([.valueChanged])
-            .debounce(0.25, scheduler: MainScheduler.instance)
+            .throttle(0.1, scheduler: MainScheduler.instance)
+            //.debounce(0.25, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [unowned self] in
                 self.viewModel.updateRunSpeed(Double(self.speedSlider.value))
                 self.updateSpeedLabel(value: Double(self.speedSlider.value))

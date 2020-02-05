@@ -35,43 +35,70 @@ struct Fibonacci: Program, Equatable {
     ]
     
     @ProgramBuilder
-    func instructionss() -> ProgramCode {
+    func functionBuilderProgram() -> ProgramCode {
+        
+        Instruction.load(2, intoRegister: .r1)
+        Instruction.store(valueInRegister: .r1, atMemoryAddress: 0)
         
         ForLoop(5) {
+            Instruction.load(valueAtMemoryAddress: 0, intoRegister: .r1)
+            Instruction.sumValueInReg1(withValue: 2)
             Instruction.output(valueInRegister: .r3)
+            Instruction.store(valueInRegister: .r3, atMemoryAddress: 0)
         }
-        
-        If(.r1, .equals, 5) {
-            Instruction.output(valueInRegister: .r2)
+    }
+    
+    func extractInstructions(from program: ProgramCode) -> [Instruction] {
+        if let instruction = program as? Instruction {
+            return [instruction]
         }
-        
-        
-        Instruction.load(0, intoRegister: .r2)
-        Instruction.load(1, intoRegister: .r3)
-        Instruction.store(valueInRegister: .r2, atMemoryAddress: 0)
-        Instruction.store(valueInRegister: .r3, atMemoryAddress: 1)
-        Instruction.load(valueAtMemoryAddress: 0, intoRegister: .r1)
-        Instruction.sumValueInReg1(withValueAtMemoryAddress: 1)
-        Instruction.jump(toInstructionAdress: 0, given: .aluOverflow)
-        Instruction.output(valueInRegister: .r3)
-        Instruction.jump(toInstructionAdress: 2)
+        if let block = program as? ProgramBlock {
+            return block.items.flatMap { extractInstructions(from: $0) }
+        }
+        return []
+    }
+    
+    func testProgram() -> [Instruction] {
+        let program = functionBuilderProgram()
+        return extractInstructions(from: program)
     }
     
     func ForLoop(_ count: UInt8, @ProgramBuilder code: ()->(ProgramCode)) -> ProgramCode {
+        
+        guard count > 0 else { return ProgramBlock(items: []) }
+        
         var instructions: [ProgramCode] = []
+        
+        // store values in r1, r2 r3
+        instructions.append(Instruction.store(valueInRegister: .r1, atMemoryAddress: 0xf1))
+        instructions.append(Instruction.store(valueInRegister: .r2, atMemoryAddress: 0xf2))
+        instructions.append(Instruction.store(valueInRegister: .r3, atMemoryAddress: 0xf3))
+        
+        // set and store starting count
         instructions.append(Instruction.load(UInt8.max - count + 1, intoRegister: .r1))
+        instructions.append(Instruction.store(valueInRegister: .r1, atMemoryAddress: 0xf5))
+        
+        // retrieve count
+        instructions.append(Instruction.load(valueAtMemoryAddress: 0xf5, intoRegister: .r1))
+        
         instructions.append(code())
+        
+        // sum count and jump if overflow
         instructions.append(Instruction.sumValueInReg1(withValue: 1))
-        instructions.append(Instruction.jump(toInstructionAdress: 0, given: .aluOverflow))
+        instructions.append(Instruction.halt(given: .aluOverflow))
+        instructions.append(Instruction.store(valueInRegister: .r3, atMemoryAddress: 0xf5))
+        
+        instructions.append(Instruction.jump(toInstructionAdress: 5))
+        
         return ProgramBlock(items: instructions)
     }
     
     func If(_ register: Register, _ check: IfCheck, _ value: UInt8, @ProgramBuilder code: ()->(ProgramCode)) -> ProgramCode {
         var instructions: [ProgramCode] = []
-        instructions.append(Instruction.load(UInt8.max - count + 1, intoRegister: .r1))
-        instructions.append(code())
-        instructions.append(Instruction.sumValueInReg1(withValue: 1))
-        instructions.append(Instruction.jump(toInstructionAdress: 0, given: .aluOverflow))
+//        instructions.append(Instruction.load(UInt8.max - count + 1, intoRegister: .r1))
+//        instructions.append(code())
+//        instructions.append(Instruction.sumValueInReg1(withValue: 1))
+//        instructions.append(Instruction.jump(toInstructionAdress: 0, given: .aluOverflow))
         return ProgramBlock(items: instructions)
     }
     

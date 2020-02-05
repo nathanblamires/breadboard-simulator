@@ -94,7 +94,7 @@
 		70EF8FA51FFCADBA3DB74006 /* Pods-BreadboardSimulatorTests.release-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreadboardSimulatorTests.release-test.xcconfig"; path = "Target Support Files/Pods-BreadboardSimulatorTests/Pods-BreadboardSimulatorTests.release-test.xcconfig"; sourceTree = "<group>"; };
 		747886AE8FE644A893DC465A /* Pods-BreadboardSimulator.debug-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreadboardSimulator.debug-test.xcconfig"; path = "Target Support Files/Pods-BreadboardSimulator/Pods-BreadboardSimulator.debug-test.xcconfig"; sourceTree = "<group>"; };
 		7D19839B3609C8D07C4AEE7D /* Pods-BreadboardSimulator.debug-dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreadboardSimulator.debug-dev.xcconfig"; path = "Target Support Files/Pods-BreadboardSimulator/Pods-BreadboardSimulator.debug-dev.xcconfig"; sourceTree = "<group>"; };
-		8D34A6CD22F50DD40020AC89 /* BreadboardSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreadboardSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D34A6CD22F50DD40020AC89 /* Breadboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breadboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D34A6D022F50DD40020AC89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D34A6D222F50DD40020AC89 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8D34A6D922F50DD60020AC89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -247,7 +247,7 @@
 		8D34A6CE22F50DD40020AC89 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D34A6CD22F50DD40020AC89 /* BreadboardSimulator.app */,
+				8D34A6CD22F50DD40020AC89 /* Breadboard.app */,
 				8D34A6E322F50DD60020AC89 /* BreadboardSimulatorTests.xctest */,
 				8D34A6EE22F50DD60020AC89 /* BreadboardSimulatorUITests.xctest */,
 			);
@@ -485,7 +485,7 @@
 				8D41946C22FE85D200C2E033 /* CoreiOS */,
 			);
 			productName = BreadboardSimulator;
-			productReference = 8D34A6CD22F50DD40020AC89 /* BreadboardSimulator.app */;
+			productReference = 8D34A6CD22F50DD40020AC89 /* Breadboard.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8D34A6E222F50DD60020AC89 /* BreadboardSimulatorTests */ = {
@@ -865,7 +865,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = au.com.nathanblamires.BreadboardSimulator;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Breadboard;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -990,7 +990,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = au.com.nathanblamires.BreadboardSimulator;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Breadboard;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
