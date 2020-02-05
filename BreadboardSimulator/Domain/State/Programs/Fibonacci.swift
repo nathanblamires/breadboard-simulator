@@ -41,6 +41,9 @@ struct Fibonacci: Program, Equatable {
             Instruction.output(valueInRegister: .r3)
         }
         
+        If(.r1, .equals, 5) {
+            Instruction.output(valueInRegister: .r2)
+        }
         
         
         Instruction.load(0, intoRegister: .r2)
@@ -61,6 +64,19 @@ struct Fibonacci: Program, Equatable {
         instructions.append(Instruction.sumValueInReg1(withValue: 1))
         instructions.append(Instruction.jump(toInstructionAdress: 0, given: .aluOverflow))
         return ProgramBlock(items: instructions)
+    }
+    
+    func If(_ register: Register, _ check: IfCheck, _ value: UInt8, @ProgramBuilder code: ()->(ProgramCode)) -> ProgramCode {
+        var instructions: [ProgramCode] = []
+        instructions.append(Instruction.load(UInt8.max - count + 1, intoRegister: .r1))
+        instructions.append(code())
+        instructions.append(Instruction.sumValueInReg1(withValue: 1))
+        instructions.append(Instruction.jump(toInstructionAdress: 0, given: .aluOverflow))
+        return ProgramBlock(items: instructions)
+    }
+    
+    enum IfCheck {
+        case equals
     }
 }
 
