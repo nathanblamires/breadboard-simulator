@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,7 +24,6 @@
 		8D34A71E22F50EFB0020AC89 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34A71B22F50EFA0020AC89 /* Store.swift */; };
 		8D34A71F22F50EFB0020AC89 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34A71C22F50EFA0020AC89 /* AppState.swift */; };
 		8D34A72822F50F570020AC89 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34A72722F50F570020AC89 /* ViewModel.swift */; };
-		8D41946D22FE85D200C2E033 /* CoreiOS in Frameworks */ = {isa = PBXBuildFile; productRef = 8D41946C22FE85D200C2E033 /* CoreiOS */; };
 		8D687D9322F547020044FA00 /* UseCases+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D687D9222F547020044FA00 /* UseCases+Init.swift */; };
 		8D687D9622F547300044FA00 /* SaveAppStateUseCaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D687D9522F547300044FA00 /* SaveAppStateUseCaseSpec.swift */; };
 		8D6EBE5922FE44FE0001110C /* VersionSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6EBE5822FE44FE0001110C /* VersionSpecs.swift */; };
@@ -171,7 +170,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				29A2BA2381E2636DEB048A0B /* Pods_BreadboardSimulator.framework in Frameworks */,
-				8D41946D22FE85D200C2E033 /* CoreiOS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,7 +480,6 @@
 			);
 			name = BreadboardSimulator;
 			packageProductDependencies = (
-				8D41946C22FE85D200C2E033 /* CoreiOS */,
 			);
 			productName = BreadboardSimulator;
 			productReference = 8D34A6CD22F50DD40020AC89 /* Breadboard.app */;
@@ -560,7 +557,6 @@
 			);
 			mainGroup = 8D34A6C422F50DD40020AC89;
 			packageReferences = (
-				8D41946B22FE85D200C2E033 /* XCRemoteSwiftPackageReference "core-ios" */,
 			);
 			productRefGroup = 8D34A6CE22F50DD40020AC89 /* Products */;
 			projectDirPath = "";
@@ -1079,25 +1075,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		8D41946B22FE85D200C2E033 /* XCRemoteSwiftPackageReference "core-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:nathanblamires/core-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		8D41946C22FE85D200C2E033 /* CoreiOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8D41946B22FE85D200C2E033 /* XCRemoteSwiftPackageReference "core-ios" */;
-			productName = CoreiOS;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8D34A6C522F50DD40020AC89 /* Project object */;
 }

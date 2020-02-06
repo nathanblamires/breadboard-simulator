@@ -15,7 +15,7 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "8D34A6CC22F50DD40020AC89"
-                     BuildableName = "BreadboardSimulator.app"
+                     BuildableName = "Breadboard.app"
                      BlueprintName = "BreadboardSimulator"
                      ReferencedContainer = "container:BreadboardSimulator.xcodeproj">
                   </BuildableReference>
@@ -33,7 +33,7 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "8D34A6CC22F50DD40020AC89"
-                     BuildableName = "BreadboardSimulator.app"
+                     BuildableName = "Breadboard.app"
                      BlueprintName = "BreadboardSimulator"
                      ReferencedContainer = "container:BreadboardSimulator.xcodeproj">
                   </BuildableReference>
@@ -51,7 +51,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8D34A6CC22F50DD40020AC89"
-               BuildableName = "BreadboardSimulator.app"
+               BuildableName = "Breadboard.app"
                BlueprintName = "BreadboardSimulator"
                ReferencedContainer = "container:BreadboardSimulator.xcodeproj">
             </BuildableReference>
@@ -113,7 +113,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D34A6CC22F50DD40020AC89"
-            BuildableName = "BreadboardSimulator.app"
+            BuildableName = "Breadboard.app"
             BlueprintName = "BreadboardSimulator"
             ReferencedContainer = "container:BreadboardSimulator.xcodeproj">
          </BuildableReference>
@@ -130,7 +130,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D34A6CC22F50DD40020AC89"
-            BuildableName = "BreadboardSimulator.app"
+            BuildableName = "Breadboard.app"
             BlueprintName = "BreadboardSimulator"
             ReferencedContainer = "container:BreadboardSimulator.xcodeproj">
          </BuildableReference>
